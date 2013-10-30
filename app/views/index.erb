@@ -1,0 +1,33 @@
+<div class="container">
+  <a href="/sessions/login">Log in</a><br>
+  <a href="/users/create">Create Account</a><br>
+  <h1>Shorten your url!</h1>
+
+  <form action="/urls" method="post">
+    Enter url: <input type="text" name="long_url">
+                     <input type="submit" value="Shorten!">
+  </form>
+
+  <br>
+
+  <% if @message %>
+    <p style='color:red'><%=@message%></p>
+  <% end %>
+
+  <br>
+
+  <table border="1" cellpadding="10">
+    <tr>
+      <th>Link</th>
+      <th>Visits</th>
+    </tr>
+    <% @urls.sort_by! { |url| url.click_count } %>
+    <% @urls.reverse_each do |url| %>
+    <tr>
+      <td><a href='<%=url.short_url %>'><%= url.short_url %></a></td>
+      <td><%= url.click_count %></td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

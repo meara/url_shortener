@@ -1,0 +1,14 @@
+<div class="container">
+
+<h1>Log in!</h1>
+
+<p>Logged in: <%= session[:logged_in] %></p>
+<p>User name: <%= session[:user_name] %></p>
+
+<form action="/sessions/logged_in" method="post">
+Email: <input type="text" name="email">
+Password: <input type="text" name="password">
+                    <input type="submit" value="Log in!">
+</form>
+
+</div>
